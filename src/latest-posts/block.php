@@ -1,44 +1,62 @@
 <?php
 
 
-class VkBlocksLatestPosts{
+class VkBlocksLatestPosts {
 
 	public function render_latest_posts( $attributes ) {
+		$elm = 'ぐほ';
+		return $elm;
+		if ( class_exists( 'Lightning_media_posts' ) ) {
+			$patterns = Lightning_media_posts::patterns();
+		}
 
+		// ブロックで指定されたレイアウト
 		$layout      = $attributes['layout'];
 		$numberPosts = $attributes['numberPosts'];
-
-		$layoutClass = '';
-
-		//プルダウンの値によってデザインのクラスを変更
-		if ( $layout === 'image_1st' ) {
-			$layoutClass = 'image_1st';
-		} elseif ( $layout === 'image_2st' ) {
-			$layoutClass = 'image_1st';
-		}
 
 		global $wp_query;
 		$wp_query = get_loop_query( $attributes );
 		global $post;
 
+		$layoutClass      = '';
+		$loop_before_html = '';
+		$loop_after_html  = '';
+
+		// プルダウンの値によってデザインのクラスを変更
+		if ( $layout === 'vert_large_image_3' ) {
+			$layoutClass      = 'image_1st';
+			$loop_before_html = '<ul class=' . $layoutClass . '>';
+			$loop_after_html  = '</ul>';
+		} elseif ( $layout === 'image_2st' ) {
+			$layoutClass = 'image_1st';
+		} elseif ( $layout === 'lightning_std' ) {
+			$layoutClass = 'image_1st';
+		}
+
 		$elm = '';
 
 		if ( have_posts() ) :
 			$elm .= '<div class="vk_latestPosts">';
-			$elm .= '<ul class=' . $layoutClass . '>';
+			$elm .= $loop_before_html;
 			while ( have_posts() ) {
 				the_post();
-				$elm .= '<li>';
-				$elm .= get_loop_post_view( $post );
-				$elm .= '</li>';
+
+				if ( $layout === 'vert_large_image_3' ) {
+					$elm .= Ltg_Media_Post_View::get_media_post_item( $patterns[ $layout ]['class_post_item'], $instance );
+				} else {
+					$elm .= '<li>';
+					$elm .= get_loop_post_view( $post );
+					$elm .= '</li>';
+				}
 			} // while ( have_posts() ) {
-			$elm .= '</ul>';
+			$elm .= $loop_after_html;
 			$elm .= '</div>';
+
 		endif;
 
 		wp_reset_query();
 		wp_reset_postdata();
-
+			$elm = 'ぐほ';
 		return $elm;
 	}
 
@@ -55,27 +73,26 @@ class VkBlocksLatestPosts{
 		);
 
 		// if ( $instance['format'] ) {
-		// 	$this->_taxonomy_init( $post_type ); }
+		// $this->_taxonomy_init( $post_type ); }
 		//
 		// if ( isset( $instance['terms'] ) && $instance['terms'] ) {
-		// 	$taxonomies          = get_taxonomies( array() );
-		// 	$args['tax_query'] = array(
-		// 		'relation' => 'OR',
-		// 	);
-		// 	$terms_array         = explode( ',', $instance['terms'] );
-		// 	foreach ( $taxonomies as $taxonomy ) {
-		// 		$args['tax_query'][] = array(
-		// 			'taxonomy' => $taxonomy,
-		// 			'field'    => 'id',
-		// 			'terms'    => $terms_array,
-		// 		);
-		// 	}
+		// $taxonomies          = get_taxonomies( array() );
+		// $args['tax_query'] = array(
+		// 'relation' => 'OR',
+		// );
+		// $terms_array         = explode( ',', $instance['terms'] );
+		// foreach ( $taxonomies as $taxonomy ) {
+		// $args['tax_query'][] = array(
+		// 'taxonomy' => $taxonomy,
+		// 'field'    => 'id',
+		// 'terms'    => $terms_array,
+		// );
 		// }
-
+		// }
 		$wp_query = new WP_Query( $args );
 		// if ( have_posts() ) :
-		// 	$layout = $instance['format'];
-		// 	Ltg_Media_Post_View::post_loop( $layout, $instance );
+		// $layout = $instance['format'];
+		// Ltg_Media_Post_View::post_loop( $layout, $instance );
 		// endif;
 		return $wp_query;
 	}
@@ -108,7 +125,7 @@ class VkBlocksLatestPosts{
 
 		// $elm      .= '</div>';
 		// ※アーカイブページの場合はこのメソッドが呼び出される時点で instance に数字が入っているで、ここの数字を変更しても反映されない
-		$days  = isset( $instance['new_icon_display'] ) ? $instance['new_icon_display'] : 7; //Newを表示させたい期間の日数
+		$days  = isset( $instance['new_icon_display'] ) ? $instance['new_icon_display'] : 7; // Newを表示させたい期間の日数
 		$today = date_i18n( 'U' );
 		$entry = get_the_time( 'U' );
 		$kiji  = date( 'U', ( $today - $entry ) ) / 86400;

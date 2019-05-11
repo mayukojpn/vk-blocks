@@ -101,8 +101,8 @@ registerBlockType('vk-blocks/latest-posts', {
                                 onChange={(value) => setAttributes({layout: value})}
                                 options={[
                                     {
-                                        value: 'image_1st',
-                                        label: __('image_1st', 'vk-blocks'),
+                                        value: 'vert_large_image_3',
+                                        label: __( 'Vertical card large image 3 column', 'vk-blocks' ),
                                     },
                                     {
                                         value: 'image_2st',
