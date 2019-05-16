@@ -1,8 +1,6 @@
 /**
  * your-block-slug block type
- *
  */
-import React from "react";
 import NewComponent from "./component";
 import {schema} from './schema';
 // import {deprecated} from './deprecated/block';
@@ -49,6 +47,7 @@ registerBlockType('vk-blocks/your-block-slug', {
             insertImage,
             arrowFlag,
         } = attributes;
+        attributes['className'] = className;
 
         return (
             <Fragment>
@@ -62,13 +61,10 @@ registerBlockType('vk-blocks/your-block-slug', {
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
-                <div className={`${className} vk_your-block-slug`}>
-                    <div>Editor</div>
-                    <NewComponent
-                        attributes={attributes}
-                        for_={'edit'}
-                    />
-                </div>
+                <NewComponent
+                    attributes={attributes}
+                    for_={'edit'}
+                />
             </Fragment>
         );
     },
@@ -84,13 +80,10 @@ registerBlockType('vk-blocks/your-block-slug', {
     save({attributes, className}) {
 
         return (
-            <div className={`${className} vk_your-block-slug`}>
-                <div>View</div>
-                <NewComponent
-                    attributes={attributes}
-                    for_={'save'}
-                />
-            </div>
+            <NewComponent
+                attributes={attributes}
+                for_={'save'}
+            />
         );
     },
 

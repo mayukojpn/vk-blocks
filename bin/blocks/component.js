@@ -4,17 +4,19 @@ export default class NewComponent extends React.Component {
 
     render() {
 
-        let {
+        const {
+            className,
             heading,
             content,
             insertImage,
             arrowFlag,
         } = this.props.attributes;
-
-        let for_ = this.props.for_;
+        const for_ = this.props.for_;
 
         return (
-            <div className={"vk_your-block-slug"}>hello</div>
+            <div className={`${className} vk_your-block-slug`}>
+                <div>Editor</div>
+            </div>
         );
     }
 }
