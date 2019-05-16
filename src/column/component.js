@@ -12,6 +12,13 @@ export default class Component extends React.Component {
         let for_ = this.props.for_;
         let content;
 
+        //エディタとビューの切り替え
+        if(for_ === 'edit'){
+            content = <InnerBlocks/>;
+        }else if('save'){
+            content = <InnerBlocks.Content/>;
+        }
+
         /**
          * add column indicated by RangeControl Number.
          * @param colNum
@@ -25,13 +32,6 @@ export default class Component extends React.Component {
             }
             return returnElm;
         };
-
-        //エディタとビューの切り替え
-        if(for_ === 'edit'){
-            content = <InnerBlocks/>;
-        }else if('save'){
-            content = <InnerBlocks.Content/>;
-        }
 
         return (
             <div className={`${className} vk_column`}>
