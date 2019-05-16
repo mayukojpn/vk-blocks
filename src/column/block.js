@@ -1,12 +1,8 @@
 /**
  * column block type
- *
  */
-import React from "react";
-import NewComponent from "./component";
+import Component from "./component";
 import {schema} from './schema';
-// import {deprecated} from './deprecated/block';
-
 const {__} = wp.i18n; // Import __() from wp.i18n
 const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
 const {RangeControl, PanelBody, BaseControl} = wp.components;
@@ -46,20 +42,7 @@ registerBlockType('vk-blocks/column', {
         const {
             colNum,
         } = attributes;
-
-        /**
-         * add column indicated by RangeControl Number.
-         * @param colNum
-         * @returns {Array}
-         */
-        const addColumn = (colNum) => {
-
-            let returnElm = [];
-            for(let i = 0; i < colNum; i++ ){
-                returnElm.push(<div>hello</div>);
-            }
-            return returnElm;
-        };
+        attributes['className'] = className;
 
         return (
             <Fragment>
@@ -75,13 +58,10 @@ registerBlockType('vk-blocks/column', {
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
-                <div className={`${className} vk_column`}>
-                    {addColumn(colNum)}
-                    {/*<NewComponent*/}
-                        {/*attributes={attributes}*/}
-                        {/*for_={'edit'}*/}
-                    {/*/>*/}
-                </div>
+                <Component
+                    attributes={attributes}
+                    for_={'edit'}
+                />
             </Fragment>
         );
     },
@@ -97,13 +77,10 @@ registerBlockType('vk-blocks/column', {
     save({attributes,className}) {
 
         return (
-            <div className={`${className} vk_column`}>
-                <div>Front</div>
-                <NewComponent
-                    attributes={attributes}
-                    for_={'save'}
-                />
-            </div>
+            <Component
+                attributes={attributes}
+                for_={'save'}
+            />
         );
     },
 
