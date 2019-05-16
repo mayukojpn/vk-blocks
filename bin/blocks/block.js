@@ -62,7 +62,7 @@ registerBlockType('vk-blocks/your-block-slug', {
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
-                <div className="vk_spacer">
+                <div className="vk_your-block-slug">
                     <div>Editor</div>
                     <NewComponent
                         attributes={attributes}
