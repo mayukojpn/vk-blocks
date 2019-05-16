@@ -1,7 +1,7 @@
 /**
  * your-block-slug block type
  */
-import NewComponent from "./component";
+import Component from "./component";
 import {schema} from './schema';
 // import {deprecated} from './deprecated/block';
 
@@ -61,7 +61,7 @@ registerBlockType('vk-blocks/your-block-slug', {
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
-                <NewComponent
+                <Component
                     attributes={attributes}
                     for_={'edit'}
                 />
@@ -80,7 +80,7 @@ registerBlockType('vk-blocks/your-block-slug', {
     save({attributes, className}) {
 
         return (
-            <NewComponent
+            <Component
                 attributes={attributes}
                 for_={'save'}
             />

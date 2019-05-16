@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class NewComponent extends React.Component {
+export default class Component extends React.Component {
 
     render() {
 
@@ -15,7 +15,7 @@ export default class NewComponent extends React.Component {
 
         return (
             <div className={`${className} vk_your-block-slug`}>
-                <div>Editor</div>
+                <div>Content</div>
             </div>
         );
     }
