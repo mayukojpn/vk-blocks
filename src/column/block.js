@@ -47,6 +47,20 @@ registerBlockType('vk-blocks/column', {
             colNum,
         } = attributes;
 
+        /**
+         * add column indicated by RangeControl Number.
+         * @param colNum
+         * @returns {Array}
+         */
+        const addColumn = (colNum) => {
+
+            let returnElm = [];
+            for(let i = 0; i < colNum; i++ ){
+                returnElm.push(<div>hello</div>);
+            }
+            return returnElm;
+        };
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -54,17 +68,19 @@ registerBlockType('vk-blocks/column', {
                         <BaseControl label={__('Column Number', 'vk-blocks')}>
                             <RangeControl
                                 value={colNum}
+                                min={0}
+                                max={10}
                                 onChange={(value) => setAttributes({colNum: value})}
                             />
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
                 <div className={`${className} vk_column`}>
-                    <div>Editor</div>
-                    <NewComponent
-                        attributes={attributes}
-                        for_={'edit'}
-                    />
+                    {addColumn(colNum)}
+                    {/*<NewComponent*/}
+                        {/*attributes={attributes}*/}
+                        {/*for_={'edit'}*/}
+                    {/*/>*/}
                 </div>
             </Fragment>
         );
