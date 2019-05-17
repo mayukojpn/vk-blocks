@@ -1,5 +1,18 @@
 import React from 'react';
+import {times} from 'lodash';
+
 const {InnerBlocks} = wp.editor;
+
+/**
+ * Returns the layouts configuration for a given number of columns.
+ *
+ * @param {number} columns Number of columns.
+ *
+ * @return {Object[]} Columns layout configuration.
+ */
+// export const getColumnsTemplate = memoize( ( columns ) => {
+//     return times( columns, () => [ 'core/column' ] );
+// } );
 
 export default class Component extends React.Component {
 
@@ -19,6 +32,12 @@ export default class Component extends React.Component {
             content = <InnerBlocks.Content/>;
         }
 
+        const ALLOWED_BLOCKS = ['core/column'];
+
+        const getColumnsTemplate = (columns) => {
+            return times(columns, () => ['core/column']);
+        };
+
         /**
          * add column indicated by RangeControl Number.
          * @param colNum
@@ -26,15 +45,22 @@ export default class Component extends React.Component {
          */
         const addColumn = (colNum) => {
 
-            let returnElm = [];
+            let returnElm = '';
             for (let i = 0; i < colNum; i++) {
-                returnElm.push(content);
+
+                returnElm = <InnerBlocks
+                    template={getColumnsTemplate(colNum)}
+                    templateLock="all"
+                    allowedBlocks={ALLOWED_BLOCKS}
+                />;
             }
+            console.log(returnElm);
             return returnElm;
         };
 
         return (
             <div className={`${className} vk_column`}>
+                <div>hello</div>
                 {
                     addColumn(colNum)
                 }

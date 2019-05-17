@@ -3,11 +3,12 @@
  */
 import Component from "./component";
 import {schema} from './schema';
+import React from "react";
 const {__} = wp.i18n; // Import __() from wp.i18n
 const {registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
 const {RangeControl, PanelBody, BaseControl} = wp.components;
 const {Fragment} = wp.element;
-const {InspectorControls} = wp.editor;
+const {InspectorControls,InnerBlocks} = wp.editor;
 const BlockIcon = 'arrow-down';
 
 /**
@@ -44,6 +45,10 @@ registerBlockType('vk-blocks/column', {
         } = attributes;
         attributes['className'] = className;
 
+        const ALLOWED_BLOCKS = [ 'core/paragraph' ];
+        const ALLOWED_BLOCKS2 = [ 'core/image' ];
+
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -62,6 +67,18 @@ registerBlockType('vk-blocks/column', {
                     attributes={attributes}
                     for_={'edit'}
                 />
+                {/*<div>*/}
+                    {/*<div>hello3</div>*/}
+                    {/*<InnerBlocks*/}
+                        {/*allowedBlocks={ ALLOWED_BLOCKS }*/}
+                    {/*/>*/}
+                    {/*<InnerBlocks*/}
+                        {/*allowedBlocks={ ALLOWED_BLOCKS2 }*/}
+                    {/*/>*/}
+                    {/*{*/}
+                        {/*() => [ 'core/column' ]*/}
+                    {/*}*/}
+                {/*</div>*/}
             </Fragment>
         );
     },
