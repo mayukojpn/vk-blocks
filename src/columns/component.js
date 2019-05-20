@@ -16,8 +16,7 @@ export default class Component extends React.Component {
     render() {
 
         const {
-            colNum,
-            className
+            colNum
         } = this.props.attributes;
         let for_ = this.props.for_;
         let content;
@@ -68,12 +67,6 @@ export default class Component extends React.Component {
             return returnElm;
         };
 
-        return (
-            <div className={`${className} vk_column`}>
-                {
-                    addColumn(colNum)
-                }
-            </div>
-        );
+        return (addColumn(colNum));
     }
 }

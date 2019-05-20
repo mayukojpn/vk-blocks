@@ -43,7 +43,6 @@ registerBlockType('vk-blocks/columns', {
         const {
             colNum,
         } = attributes;
-        attributes['className'] = className;
 
         return (
             <Fragment>
@@ -59,10 +58,12 @@ registerBlockType('vk-blocks/columns', {
                         </BaseControl>
                     </PanelBody>
                 </InspectorControls>
-                <Component
-                    attributes={attributes}
-                    for_={'edit'}
-                />
+                <div className={`${className} vk_columns`}>
+                    <Component
+                        attributes={attributes}
+                        for_={'edit'}
+                    />
+                </div>
             </Fragment>
         );
     },
@@ -75,14 +76,15 @@ registerBlockType('vk-blocks/columns', {
      *
      * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
      */
-    save({attributes,className}) {
-        attributes['className'] = className;
+    save({attributes}) {
 
         return (
-            <Component
-                attributes={attributes}
-                for_={'save'}
-            />
+            <div className={`vk_columns`}>
+                <Component
+                    attributes={attributes}
+                    for_={'save'}
+                />
+            </div>
         );
     },
 
