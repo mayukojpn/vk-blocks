@@ -1,5 +1,5 @@
 /**
- * Column block type
+ * Columns block type
  */
 import Component from "./component";
 import {schema} from './schema';
@@ -24,17 +24,12 @@ const BlockIcon = 'arrow-down';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType('vk-blocks/column', {
+registerBlockType('vk-blocks/columns', {
     // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-    title: __('Column', 'vk-blocks'), // Block title.
+    title: __('Columns', 'vk-blocks'), // Block title.
     icon: BlockIcon, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
     category: 'vk-blocks-cat', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
     attributes: schema,
-    supports: {
-        inserter: false,
-        reusable: false,
-        html: false,
-    },
 
     /**
      * The edit function describes the structure of your block in the context of the editor.
@@ -53,8 +48,8 @@ registerBlockType('vk-blocks/column', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Column Setting', 'vk-blocks')}>
-                        <BaseControl label={__('Column Number', 'vk-blocks')}>
+                    <PanelBody title={__('Columns Setting', 'vk-blocks')}>
+                        <BaseControl label={__('Columns Number', 'vk-blocks')}>
                             <RangeControl
                                 value={colNum}
                                 min={0}
@@ -81,6 +76,7 @@ registerBlockType('vk-blocks/column', {
      * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
      */
     save({attributes,className}) {
+        attributes['className'] = className;
 
         return (
             <Component

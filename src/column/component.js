@@ -1,6 +1,5 @@
 import React from 'react';
 import {times} from 'lodash';
-
 const {InnerBlocks} = wp.editor;
 
 /**
@@ -31,39 +30,9 @@ export default class Component extends React.Component {
         }else if('save'){
             content = <InnerBlocks.Content/>;
         }
-
-        const ALLOWED_BLOCKS = ['core/column'];
-
-        const getColumnsTemplate = (columns) => {
-            return times(columns, () => ['core/column']);
-        };
-
-        /**
-         * add column indicated by RangeControl Number.
-         * @param colNum
-         * @returns {Array}
-         */
-        const addColumn = (colNum) => {
-
-            let returnElm = '';
-            for (let i = 0; i < colNum; i++) {
-
-                returnElm = <InnerBlocks
-                    template={getColumnsTemplate(colNum)}
-                    templateLock="all"
-                    allowedBlocks={ALLOWED_BLOCKS}
-                />;
-            }
-            console.log(returnElm);
-            return returnElm;
-        };
-
         return (
             <div className={`${className} vk_column`}>
-                <div>hello</div>
-                {
-                    addColumn(colNum)
-                }
+                This is component to repeat! It's repeated ${colNum} times!
             </div>
         );
     }

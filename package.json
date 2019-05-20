@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "npm install && npm run build && npm run watch && wp plugin activate vk-blocks && wp browse --wp-admin",
+    "start": "npm install && npm run build",
     "watch": "gulp watch",
     "build": "gulp build && npm run translate",
     "translate": "npx po2json ./inc/vk-blocks/build/languages/vk-blocks-ja.po ./inc/vk-blocks/build/languages/vk-blocks-ja-vk-blocks-build-js.json -f jed",
@@ -45,6 +45,8 @@
   "dependencies": {
     "@wordpress/i18n": "^3.1.0",
     "aphrodite": "^2.2.3",
+    "lodash": "^4.17.11",
+    "memize": "^1.0.5",
     "po2json": "^1.0.0-alpha",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
