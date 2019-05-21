@@ -1,5 +1,4 @@
 import React from 'react';
-import {times} from 'lodash';
 const {InnerBlocks} = wp.editor;
 
 /**
