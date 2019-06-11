@@ -56,7 +56,7 @@ registerBlockType('vk-blocks/th', {
             textOverflow
         } = attributes;
 
-        className = className + ' vk_th_content wp-block-table__cell-content';
+        className = className + ' vk_th vk_th_content wp-block-table__cell-content';
         if (textOverflow) {
             className = className + ' vk_table-col-overflow';
         }
@@ -72,13 +72,14 @@ registerBlockType('vk-blocks/th', {
                     </PanelBody>
                 </InspectorControls>
 
-                <th><RichText
-                    tagName="div"
+                <RichText
+                    tagName="th"
                     className={className}
                     onChange={(value) => setAttributes({content: value})}
                     value={content}
                     // placeholder={__('Please enter content', 'vk-blocks')}
-                /></th>
+                />
+
             </Fragment>
         );
     },
@@ -98,16 +99,18 @@ registerBlockType('vk-blocks/th', {
         } = attributes;
 
 
-        let containerClass = 'vk_th_content wp-block-table__cell-content';
+        let containerClass = 'vk_th vk_th_content wp-block-table__cell-content';
         if (textOverflow) {
             containerClass = containerClass + ' vk_table-col-overflow';
         }
 
-        return (<th><RichText.Content
-            tagName="div"
+        return (<React.Fragment>
+					<RichText.Content
+            tagName="th"
             className={containerClass}
             value={content}
-        /></th>);
+        />
+			</React.Fragment>);
     },
 
     //Please comment out, when you need to use deprecated.
