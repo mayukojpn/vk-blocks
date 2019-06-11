@@ -60,6 +60,7 @@ registerBlockType('vk-blocks/th', {
         if (textOverflow) {
             className = className + ' vk_table-col-overflow';
         }
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -72,13 +73,12 @@ registerBlockType('vk-blocks/th', {
                     </PanelBody>
                 </InspectorControls>
 
-                <th><RichText
-                    tagName="div"
-                    className={className}
-                    onChange={(value) => setAttributes({content: value})}
-                    value={content}
-                    // placeholder={__('Please enter content', 'vk-blocks')}
-                /></th>
+                <th className={className}>
+                    <RichText
+                        onChange={(value) => setAttributes({content: value})}
+                        value={content}
+                    />
+                </th>
             </Fragment>
         );
     },
@@ -103,11 +103,7 @@ registerBlockType('vk-blocks/th', {
             containerClass = containerClass + ' vk_table-col-overflow';
         }
 
-        return (<th><RichText.Content
-            tagName="div"
-            className={containerClass}
-            value={content}
-        /></th>);
+        return (<th className={containerClass}><RichText.Content value={content}/></th>);
     },
 
     //Please comment out, when you need to use deprecated.
