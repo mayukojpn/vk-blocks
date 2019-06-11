@@ -53,12 +53,9 @@ registerBlockType('vk-blocks/td', {
             content
         } = attributes;
 
-        return (<td><RichText
-            tagName="div"
-            className={'vk_td_content wp-block-table__cell-content'}
+        return (<td className={'vk_td_content wp-block-table__cell-content'}><RichText
             onChange={(value) => setAttributes({content: value})}
             value={content}
-            // placeholder={__('Please enter content', 'vk-blocks')}
         /></td>);
     },
 
@@ -74,11 +71,7 @@ registerBlockType('vk-blocks/td', {
         const {
             content
         } = attributes;
-        return (<td><RichText.Content
-            tagName="div"
-            className={'vk_td_content wp-block-table__cell-content'}
-            value={content}
-        /></td>);
+        return (<td className={'vk_td_content wp-block-table__cell-content'}><RichText.Content value={content}/></td>);
     },
 
     //Please comment out, when you need to use deprecated.
