@@ -286,7 +286,7 @@ msgstr ""
 
 #: src/heading/block.js:125
 #: src/staff/block.js:105
-#: src/table-of-contents/block.js:106
+#: src/table-of-contents/block.js:107
 msgid "Default"
 msgstr ""
 
@@ -493,7 +493,7 @@ msgid "Border radius"
 msgstr ""
 
 #: src/outer/block.js:326
-#: src/table-of-contents/block.js:125
+#: src/table-of-contents/block.js:145
 msgid "This block is only for users who bought Lightning Pro."
 msgstr ""
 
@@ -748,10 +748,22 @@ msgstr ""
 msgid "Table of Contents"
 msgstr ""
 
-#: src/table-of-contents/block.js:110
+#: src/table-of-contents/block.js:111
 msgid "No frame"
 msgstr ""
 
-#: src/table-of-contents/block.js:97
+#: src/table-of-contents/block.js:117
+msgid "Index number format"
+msgstr ""
+
+#: src/table-of-contents/block.js:126
+msgid "1 digit"
+msgstr ""
+
+#: src/table-of-contents/block.js:130
+msgid "full digit"
+msgstr ""
+
+#: src/table-of-contents/block.js:98
 msgid "Style"
 msgstr ""

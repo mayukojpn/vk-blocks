@@ -52,7 +52,7 @@ class TableOfContents {
      * @param className
      * @returns {*}
      */
-    returnHtml(source, style, className) {
+    returnHtml(source, style, indexStyle, className) {
 
         if (!className) {
             className = 'vk_tableOfContents';

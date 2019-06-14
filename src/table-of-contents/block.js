@@ -68,12 +68,13 @@ registerBlockType('vk-blocks/table-of-contents', {
     edit({attributes, setAttributes, className, clientId}) {
         const {
             style,
+            indexStyle,
         } = attributes;
 
         const toc = new TableOfContents();
         const render = () =>{
             let source = toc.getHtagsInEditor();
-            let html = toc.returnHtml(source, style, className);
+            let html = toc.returnHtml(source, style, indexStyle, className);
             setAttributes({renderHtml: html});
         };
         subscribe(() => {
@@ -109,6 +110,25 @@ registerBlockType('vk-blocks/table-of-contents', {
                                         value: '',
                                         label: __('No frame', 'vk-blocks'),
                                     }
+                                ]}
+                            />
+                        </BaseControl>
+												<BaseControl
+                            label={__('Index number format', 'vk-blocks')}
+                            help={``}
+                        >
+                            <SelectControl
+                                value={indexStyle}
+                                onChange={(value) => setAttributes({indexStyle: value})}
+                                options={[
+																	{
+																			value: 'one',
+																			label: __('1 digit', 'vk-blocks'),
+																	},
+																	{
+																			value: 'full',
+																			label: __('full digit', 'vk-blocks'),
+																	}
                                 ]}
                             />
                         </BaseControl>
