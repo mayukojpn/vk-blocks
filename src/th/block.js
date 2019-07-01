@@ -75,7 +75,6 @@ registerBlockType('vk-blocks/th', {
 
                 <th className={className}>
                     <RichText
-                        className={"test"}
                         onChange={(value) => setAttributes({content: value})}
                         value={content}
                     />
@@ -104,7 +103,7 @@ registerBlockType('vk-blocks/th', {
             containerClass = containerClass + ' vk_table-col-overflow';
         }
 
-        return (<th className={containerClass}><RichText.Content className={"test"} value={content}/></th>);
+        return (<th className={containerClass}><RichText.Content value={content}/></th>);
     },
 
     //Please comment out, when you need to use deprecated.

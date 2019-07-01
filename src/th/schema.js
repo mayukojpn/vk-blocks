@@ -2,7 +2,7 @@ export const schema = {
     content: {
         type: 'string',
         source: 'text',
-        selector: '.test',
+        selector: 'th',
     },
     textOverflow: {
         type: 'Boolean',
