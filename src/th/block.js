@@ -72,7 +72,7 @@ registerBlockType('vk-blocks/th', {
                     </PanelBody>
                 </InspectorControls>
 
-                <th><RichText
+                <th className={`vk_table_th vk_table_cell`}><RichText
                     tagName="div"
                     className={className}
                     onChange={(value) => setAttributes({content: value})}
@@ -97,15 +97,14 @@ registerBlockType('vk-blocks/th', {
             textOverflow
         } = attributes;
 
-
-        let containerClass = 'vk_th_content wp-block-table__cell-content';
+        let contentClass = 'vk_table_th_content vk_table_cell_content wp-block-table__cell-content';
         if (textOverflow) {
-            containerClass = containerClass + ' vk_table-col-overflow';
+            contentClass = contentClass + ' vk_table-col-overflow';
         }
 
-        return (<th><RichText.Content
+        return (<th className={`vk_table_th vk_table_cell`}><RichText.Content
             tagName="div"
-            className={containerClass}
+            className={contentClass}
             value={content}
         /></th>);
     },

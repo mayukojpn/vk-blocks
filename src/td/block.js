@@ -53,7 +53,7 @@ registerBlockType('vk-blocks/td', {
             content
         } = attributes;
 
-        return (<td><RichText
+        return (<td classNama={`vk_table_td  vk_table_cell`}><RichText
             tagName="div"
             className={'vk_td_content wp-block-table__cell-content'}
             onChange={(value) => setAttributes({content: value})}
@@ -74,9 +74,9 @@ registerBlockType('vk-blocks/td', {
         const {
             content
         } = attributes;
-        return (<td><RichText.Content
+        return (<td classNama={`vk_table_td vk_table_cell`}><RichText.Content
             tagName="div"
-            className={'vk_td_content wp-block-table__cell-content'}
+            className={'vk_table_td_content vk_table_cell_content wp-block-table__cell-content'}
             value={content}
         /></td>);
     },
